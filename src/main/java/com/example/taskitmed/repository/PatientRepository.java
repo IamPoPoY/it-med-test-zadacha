@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author: JADANOV_DILMUROD
  * @date:28.05.2022
  */
-public interface PatientRepository extends JpaRepository<Long, Patient> {
+public interface PatientRepository extends JpaRepository<Patient, Long> {
 }

@@ -17,6 +17,7 @@ public class Values {
     @Column(name = "id", nullable = false)
     private Long id;
 
+
     // Shaxsiy identifikator
     // Собственно идентификатор
     @Column(unique = true)
