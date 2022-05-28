@@ -1,5 +1,5 @@
 package com.example.taskitmed.payload;
 
-public enum DiseaseType {
+public enum DiseaseTypeEnum {
     BOSHOGRIGI, TOMOGOGRIGI,YURAKOGRIGI
 }

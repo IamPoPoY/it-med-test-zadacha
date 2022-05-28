@@ -1,5 +1,6 @@
 package com.example.taskitmed.entity;
 
+import com.example.taskitmed.payload.IdentifierEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,8 @@ public class Identifier {
     // Идентификатор назначения, присвоенный другой системой (не core.fhir.uz)
     private String descriptions;
 
-    private Object object;
+    @Enumerated(value = EnumType.STRING)
+    private IdentifierEnum identifierEnum;
 
     @OneToOne
     @JoinColumn(name = "system_id")
