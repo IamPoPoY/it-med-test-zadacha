@@ -18,26 +18,26 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResult<T> {
-    private Boolean success = false;
+    private boolean success = false;
     private String message;
     private T data;
     private List<ErrorData> errors;
 
 
     //RESPONSE WITH BOOLEAN (SUCCESS OR FAIL)
-    private ApiResult(Boolean success) {
+    private ApiResult(boolean success) {
         this.success = success;
     }
 
 
     //SUCCESS RESPONSE WITH DATA
-    private ApiResult(T data, Boolean success) {
+    private ApiResult(T data, boolean success) {
         this.data = data;
         this.success = success;
     }
 
     //SUCCESS RESPONSE WITH DATA AND MESSAGE
-    private ApiResult(T data, Boolean success, String message) {
+    private ApiResult(T data, boolean success, String message) {
         this.data = data;
         this.success = success;
         this.message = message;

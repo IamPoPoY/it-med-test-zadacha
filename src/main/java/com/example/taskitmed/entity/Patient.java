@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "patient")
@@ -21,6 +22,7 @@ public class Patient {
 
     // Belgilangan bemorning asosiy biznes identifikatori
     // Основной бизнес идентификатор пациента, которому выписано назначение
+    @Size(min = 9, max = 9)
     private String description;
 
     private String type;

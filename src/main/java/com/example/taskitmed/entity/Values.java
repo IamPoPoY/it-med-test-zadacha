@@ -19,6 +19,7 @@ public class Values {
 
     // Shaxsiy identifikator
     // Собственно идентификатор
+    @Column(unique = true)
     private String description;
 
     private String type;
