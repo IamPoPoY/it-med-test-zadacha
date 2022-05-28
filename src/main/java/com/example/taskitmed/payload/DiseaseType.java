@@ -1,4 +1,4 @@
-package com.example.taskitmed.entity.payload;
+package com.example.taskitmed.payload;
 
 public enum DiseaseType {
     BOSHOGRIGI, TOMOGOGRIGI,YURAKOGRIGI

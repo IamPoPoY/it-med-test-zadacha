@@ -1,6 +1,5 @@
 package com.example.taskitmed.entity;
 
-import com.example.taskitmed.payload.DiseaseType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,17 +7,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "values")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-public class Appoitment {
+public class Values {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
-    @Enumerated(value = EnumType.STRING)
-    private DiseaseType diseaseType;
-    @OneToOne
-    private Properties properties;
+
+    // Shaxsiy identifikator
+    // Собственно идентификатор
+    @Column(unique = true)
+    private String description;
+
+    private String type;
 
 }
