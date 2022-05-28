@@ -17,10 +17,10 @@ public class PatientService {
 
     private final PatientRepository patientRepository;
 
-    public ApiResult<Patient> add(Patient patient) {
-        if ( patient.getDescription().length() != 8) return new ApiResult<>(false, "")
-        Patient patient1 = new Patient();
-        patient1.setFullName(patient.getFullName());
-
-    }
+//    public ApiResult<Patient> add(Patient patient) {
+//        if ( patient.getDescription().length() != 8) return new ApiResult<>(false, "")
+//        Patient patient1 = new Patient();
+//        patient1.setFullName(patient.getFullName());
+//
+//    }
 }

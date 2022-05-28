@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @date:28.05.2022
  */
 @RestController
-@RequestMapping("/api/ patient")
+@RequestMapping("/api/patient")
 @RequiredArgsConstructor
 public class PatientController {
 
     private final PatientRepository patientRepository;
     private final PatientService patientService;
 
-    @PostMapping
-    public HttpEntity<?> add(@RequestBody Patient patient){
-        patientService.add(patient);
-    }
+//    @PostMapping
+//    public HttpEntity<?> add(@RequestBody Patient patient){
+//        patientService.add(patient);
+//    }
 }

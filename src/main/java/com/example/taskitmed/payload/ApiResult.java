@@ -37,7 +37,7 @@ public class ApiResult<T> {
     }
 
     //SUCCESS RESPONSE WITH DATA AND MESSAGE
-    private ApiResult(T data, boolean success, String message) {
+    public ApiResult(T data, boolean success, String message) {
         this.data = data;
         this.success = success;
         this.message = message;

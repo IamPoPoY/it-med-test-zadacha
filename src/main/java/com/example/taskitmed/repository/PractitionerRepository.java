@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author: JADANOV_DILMUROD
  * @date:28.05.2022
  */
-public interface PractitionerRepository extends JpaRepository<Long, Practitioner> {
+public interface PractitionerRepository extends JpaRepository<Practitioner,Long> {
+    boolean existsByDescription(String description);
 }
