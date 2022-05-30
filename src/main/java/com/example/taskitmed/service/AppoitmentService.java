@@ -11,12 +11,24 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
 public class AppoitmentService {
     private final AppoitmentRepository appoitmentRepository;
     private final IdentifierRepository identifierRepository;
+
+    private static boolean IsMatch(String s, String pattern) {
+        try {
+            Pattern patt = Pattern.compile(pattern);
+            Matcher matcher = patt.matcher(s);
+            return matcher.matches();
+        } catch (RuntimeException e) {
+            return false;
+        }
+    }
 
     public ApiResult<Appoitment> add(AppoitmentDto appoitmentDto) {
 
@@ -47,7 +59,14 @@ public class AppoitmentService {
 
 
             identifier.setValues(value);
+            String systemUrl = appoitmentDto.getSystemUrl();
+            String regex = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+            if (!IsMatch(systemUrl,regex)) {
+                return new ApiResult(null, 500, "such URL is not valid");
+            }
             identifier.setSystemUrl(appoitmentDto.getSystemUrl());
+
+
             identifierRepository.save(identifier);
 
             appoitment.setIdentifier(identifier);
@@ -62,7 +81,6 @@ public class AppoitmentService {
             return new ApiResult(e, 500, MessageService.serverError());
         }
     }
-
 
     public ApiResult<Appoitment> getAppoitment(Integer id) {
         try {
