@@ -1,0 +1,21 @@
+//ADD APPOITMENT
+POST http://localhost:8080/api/appoitment
+Content-Type: application/json
+
+{
+  "systemUrl": "https://plugins.jetbrains.com/docs/intellij/welcome.html?from=jetbrains.org"
+}
+
+###
+//GET APPOITMENT WITH ID
+GET http://localhost:8080/api/appoitment/1
+
+###
+
+// GET ALL APPOITMENT
+GET http://localhost:8080/api/appoitment
+
+###
+// DELETE BY APPOITMENT ID
+DELETE http://localhost:8080/api/appoitment/1
+

@@ -1,6 +1,5 @@
 package com.example.taskitmed.entity;
 
-import com.example.taskitmed.payload.IdentifierEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,21 +13,15 @@ import javax.persistence.*;
 public class Identifier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     // Boshqa tizim tomonidan tayinlangan manzil identifikatori (core.fhir.uz emas)
     // Идентификатор назначения, присвоенный другой системой (не core.fhir.uz)
-    private String descriptions;
+    @Column(unique = true)
+    private String systemUrl;
 
-    @Enumerated(value = EnumType.STRING)
-    private IdentifierEnum identifierEnum;
-
-    @OneToOne
-    @JoinColumn(name = "system_id")
-    private Systems system;
-
-    @OneToOne
-    @JoinColumn(name = "values_id")
-    private Values values;
+    // shaxsiy raqam
+    @Column(unique = true)
+    private String values;
 
 }

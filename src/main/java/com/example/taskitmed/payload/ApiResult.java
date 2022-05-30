@@ -18,72 +18,49 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResult<T> {
-    private boolean success = false;
+    private int responseCode = 0;
     private String message;
     private T data;
     private List<ErrorData> errors;
 
 
     //RESPONSE WITH BOOLEAN (SUCCESS OR FAIL)
-    private ApiResult(boolean success) {
-        this.success = success;
+    private ApiResult(int responseCode) {
+        this.responseCode = responseCode;
     }
 
 
     //SUCCESS RESPONSE WITH DATA
-    private ApiResult(T data, boolean success) {
+    private ApiResult(T data, int responseCode) {
         this.data = data;
-        this.success = success;
+        this.responseCode = responseCode;
     }
 
     //SUCCESS RESPONSE WITH DATA AND MESSAGE
-    public ApiResult(T data, boolean success, String message) {
+    public ApiResult(T data, int responseCode, String message) {
         this.data = data;
-        this.success = success;
+        this.responseCode = responseCode;
         this.message = message;
     }
 
     //SUCCESS RESPONSE WITH MESSAGE
     private ApiResult(String message) {
         this.message = message;
-        this.success = Boolean.TRUE;
+        this.responseCode = 0;
     }
 
     //ERROR RESPONSE WITH MESSAGE AND ERROR CODE
     private ApiResult(String errorMsg, Integer errorCode) {
-        this.success = false;
+        this.responseCode = 0;
         this.errors = Collections.singletonList(new ErrorData(errorMsg, errorCode));
     }
 
 
     //ERROR RESPONSE WITH ERROR DATA LIST
     private ApiResult(List<ErrorData> errors) {
-        this.success = false;
+        this.responseCode = 0;
         this.errors = errors;
     }
 
-    public static <E> ApiResult<E> successResponse(E data) {
-        return new ApiResult<>(data, true);
-    }
-
-    public static <E> ApiResult<E> successResponse(E data, String message) {
-        return new ApiResult<>(data, true, message);
-    }
-
-    public static <E> ApiResult<E> successResponse() {
-        return new ApiResult<>(true);
-    }
-
-    public static ApiResult<String> successResponse(String message) {
-        return new ApiResult<>(message);
-    }
-
-    public static ApiResult<ErrorData> errorResponse(List<ErrorData> errors) {
-        return new ApiResult<>(errors);
-    }
-
-    public static ApiResult<ErrorData> errorResponse(String errorMsg, Integer errorCode) {
-        return new ApiResult<>(errorMsg, errorCode);
-    }
 
 }

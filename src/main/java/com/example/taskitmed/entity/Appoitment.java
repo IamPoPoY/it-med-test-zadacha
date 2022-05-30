@@ -1,6 +1,5 @@
 package com.example.taskitmed.entity;
 
-import com.example.taskitmed.payload.DiseaseTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,18 @@ import javax.persistence.*;
 public class Appoitment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Enumerated(value = EnumType.STRING)
-    private DiseaseTypeEnum diseaseType;
+    private Integer id;
+
     @OneToOne
-    private Properties properties;
+    private Identifier identifier;
+
+    // 9 xonali bemor raqami
+    private String patient;
+
+    // 9 xonali shifokor raqami
+    private String praction;
+
+    // 9 xonali tashkiloot raqami
+    private String oranization;
 
 }
