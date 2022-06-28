@@ -30,6 +30,7 @@ public class AppoitmentService {
         }
     }
 
+
     public ApiResult<Appoitment> add(AppoitmentDto appoitmentDto) {
 
         try {
@@ -62,7 +63,7 @@ public class AppoitmentService {
             String systemUrl = appoitmentDto.getSystemUrl();
             String regex = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
             if (!IsMatch(systemUrl,regex)) {
-                return new ApiResult(null, 500, "such URL is not valid");
+                    return new ApiResult(null, 500, "such URL is not valid");
             }
             identifier.setSystemUrl(appoitmentDto.getSystemUrl());
 
@@ -109,4 +110,5 @@ public class AppoitmentService {
         }
 
     }
+
 }
